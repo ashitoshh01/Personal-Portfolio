@@ -89,12 +89,12 @@ const HeroSection = () => {
             className="hero-text-scroll"
           >
             <div className="hero-subtitle">
-              <h1>DEVELOPER + DESIGNER </h1>
+              <h1>PROBLEM SOLVER + DEVELOPER </h1>
             </div>
           </div>
 
           <h2>
-            15-year-old coder & builder | Full Stack & App Dev | Cybersecurity Explorer Vision-driven digital creator-crafting interactive experiences at the edge of technology
+            I work on building functional and well-structured digital products with a focus on clean design and reliable performance. I’m interested in learning through real projects and improving with every iteration.
           </h2>
         </div>
       </div>

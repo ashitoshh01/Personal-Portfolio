@@ -35,10 +35,14 @@ export function TubelightNavbar({ items, className }) {
               onClick={(e) => {
                 e.preventDefault();
                 setActiveTab(item.name);
-                // Smooth scroll to section
-                const element = document.querySelector(item.url);
-                if (element) {
-                  element.scrollIntoView({ behavior: "smooth" });
+
+                if (window.lenis) {
+                  window.lenis.scrollTo(item.url, { offset: 0, duration: 2 });
+                } else {
+                  const element = document.querySelector(item.url);
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                  }
                 }
               }}
               className={cn(
