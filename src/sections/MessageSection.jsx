@@ -82,8 +82,8 @@ const MessageSection = () => {
       <div className="container mx-auto flex-center py-28 relative">
         <div className="w-full h-full">
           <div className="msg-wrapper">
-            <h1 className="first-message">App developer</h1>
-            <h1 className="first-message">Flutter developer</h1>
+            <h1 className="first-message">Software Engineer</h1>
+            <h1 className="first-message">Web developer</h1>
 
             <div
               style={{
@@ -96,10 +96,8 @@ const MessageSection = () => {
               </div>
             </div>
 
-            <h1 className="second-message">Web developer</h1>
-            <h1 className="second-message">Reverse engineer</h1>
-            <h1 className="second-message">Software engineer</h1>
-            <h1 className="second-message">AI&ML engineer</h1>
+            <h1 className="second-message">Reverse Engineer</h1>
+            <h1 className="second-message">Problem Solver</h1>
           </div>
 
           <div className="flex-center md:mt-20 mt-10">

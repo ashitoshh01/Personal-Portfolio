@@ -75,14 +75,14 @@ const BenefitSection = () => {
               borderColor={"#222123"}
             />
             <ClipPathTitle
-              title={"Flutter + Dart"}
+              title={"vercel"}
               color={"#000000ff"}
               bg={"#109ad1ff"}
               className={"fourth-title"}
               borderColor={"#222123"}
             />
             <ClipPathTitle
-              title={"Android Studio"}
+              title={"Git - GitHub"}
               color={"#00ff15ff"}
               bg={"#ffffffff"}
               className={"third-title"}
