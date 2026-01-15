@@ -29,25 +29,25 @@ const nutrientLists = [
 
 const cards = [
   {
-    src: "/images/x.png",
+    src: "/images/card_x.png",
     rotation: "rotate-z-[-10deg]",
     name: "X (Twitter)",
-    img: "/images/x.png",
+    img: "/images/card_x.png",
     translation: "translate-y-[-5%]",
-    link: "https://twitter.com/ashitosh01"
+    link: "https://x.com/ashitoshh01"
   },
   {
-    src: "/images/linkedin.png",
+    src: "/images/card_linkedin.png",
     rotation: "rotate-z-[4deg]",
     name: "LinkedIn",
-    img: "/images/linkedin.png",
-    link: "https://www.linkedin.com/in/ashitosh-lavhate-5b1b3b1b3/"
+    img: "/images/card_linkedin.png",
+    link: "https://www.linkedin.com/in/ashitosh01"
   },
   {
-    src: "/images/github.png",
+    src: "/images/card_github.png",
     rotation: "rotate-z-[-10deg]",
     name: "GitHub",
-    img: "/images/github.png",
+    img: "/images/card_github.png",
     translation: "translate-y-[5%]",
     link: "https://github.com/ashitoshh01"
   },

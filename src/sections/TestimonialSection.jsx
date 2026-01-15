@@ -31,52 +31,89 @@ const TestimonialSection = () => {
   }, []);
 
   useGSAP(() => {
-    const timer = setTimeout(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".testimonials-section",
-          start: "top bottom",
-          end: "200% top",
-          scrub: 1,
-          invalidateOnRefresh: true,
-          refreshPriority: 1,
-        },
-      });
+    const mm = gsap.matchMedia();
 
-      tl.to(".testimonials-section .first-title", {
-        xPercent: 70,
-      })
-        .to(
+    // Desktop
+    mm.add("(min-width: 769px)", () => {
+      const timer = setTimeout(() => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: ".testimonials-section",
+            start: "top bottom",
+            end: "200% top",
+            scrub: 1,
+            invalidateOnRefresh: true,
+            refreshPriority: 1,
+          },
+        });
+
+        tl.to(".testimonials-section .first-title", {
+          xPercent: 70,
+        }).to(
           ".testimonials-section .sec-title",
           {
-            xPercent: 25,
+            xPercent: 100,
           },
           "<"
         );
 
-      const pinTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".testimonials-section",
-          start: "10% top",
-          end: "200% top",
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-          refreshPriority: 1,
-        },
-      });
+        const pinTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: ".testimonials-section",
+            start: "10% top",
+            end: "200% top",
+            scrub: 1,
+            pin: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            refreshPriority: 1,
+          },
+        });
 
-      pinTl.from(".vd-card", {
-        yPercent: 150,
-        stagger: 0.2,
-        ease: "power1.inOut",
-      });
+        pinTl.from(".vd-card", {
+          yPercent: 150,
+          stagger: 0.2,
+          ease: "power1.inOut",
+        });
 
-      ScrollTrigger.refresh();
-    }, 100);
+        ScrollTrigger.refresh();
+      }, 100);
 
-    return () => clearTimeout(timer);
+      return () => clearTimeout(timer);
+    });
+
+    // Mobile
+    mm.add("(max-width: 768px)", () => {
+      const timer = setTimeout(() => {
+        // Simple entry animation for title
+        gsap.from(".testimonials-section h1", {
+          y: 50,
+          opacity: 0,
+          duration: 1,
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: ".testimonials-section",
+            start: "top 80%",
+          },
+        });
+
+        // Simple entry for cards
+        gsap.from(".vd-card", {
+          y: 100,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: ".pin-box",
+            start: "top 80%",
+          },
+        });
+        ScrollTrigger.refresh();
+      }, 100);
+      return () => clearTimeout(timer);
+    });
+
+    return () => mm.revert();
   });
 
   const handlePlay = (index) => {
