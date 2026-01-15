@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/Personal-Portfolio/", // Set base for GitHub Pages deployment
+  base: "/", // Set base to root for Vercel deployment
   plugins: [react(), tailwindcss()],
   server: {
     allowedHosts: [".ngrok-free.app"],
