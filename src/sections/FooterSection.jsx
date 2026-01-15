@@ -1,6 +1,46 @@
 import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
+import { useState } from "react";
 
 const FooterSection = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const response = await fetch("/api/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch (error) {
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <section id="footer" className="bg-[#050505] text-white py-20 px-5 md:px-10">
       <div className="max-w-7xl mx-auto space-y-16">
@@ -18,22 +58,30 @@ const FooterSection = () => {
               Tell me about your idea, project or collab. I usually reply within <span className="text-white font-semibold">24 hours</span>.
             </p>
 
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm text-gray-400 ml-1">Name</label>
                   <input
                     type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
                     placeholder="Your full name"
-                    className="w-full bg-[#262626] border border-white/5 rounded-xl px-4 py-3 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all placeholder:text-gray-600"
+                    className="w-full bg-[#262626] border border-white/5 rounded-xl px-4 py-3 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all placeholder:text-gray-600 outline-none text-white"
                   />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm text-gray-400 ml-1">Email</label>
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
                     placeholder="you@example.com"
-                    className="w-full bg-[#262626] border border-white/5 rounded-xl px-4 py-3 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all placeholder:text-gray-600"
+                    className="w-full bg-[#262626] border border-white/5 rounded-xl px-4 py-3 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all placeholder:text-gray-600 outline-none text-white"
                   />
                 </div>
               </div>
@@ -42,8 +90,12 @@ const FooterSection = () => {
                 <label className="text-sm text-gray-400 ml-1">Subject</label>
                 <input
                   type="text"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
                   placeholder="What's this about?"
-                  className="w-full bg-[#262626] border border-white/5 rounded-xl px-4 py-3 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all placeholder:text-gray-600"
+                  className="w-full bg-[#262626] border border-white/5 rounded-xl px-4 py-3 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all placeholder:text-gray-600 outline-none text-white"
                 />
               </div>
 
@@ -51,14 +103,28 @@ const FooterSection = () => {
                 <label className="text-sm text-gray-400 ml-1">Message</label>
                 <textarea
                   rows={5}
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
                   placeholder="Share your idea, goals, and timeline..."
-                  className="w-full bg-[#262626] border border-white/5 rounded-xl px-4 py-3 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all placeholder:text-gray-600 resize-none"
+                  className="w-full bg-[#262626] border border-white/5 rounded-xl px-4 py-3 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all placeholder:text-gray-600 resize-none outline-none text-white"
                 />
               </div>
 
-              <button className="w-full bg-white text-black font-bold text-lg py-4 rounded-full hover:bg-gray-200 transition-colors mt-4">
-                SEND MESSAGE
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-white text-black font-bold text-lg py-4 rounded-full hover:bg-gray-200 transition-colors mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? "SENDING..." : "SEND MESSAGE"}
               </button>
+              {submitStatus === "success" && (
+                <p className="text-green-500 text-center mt-2">Message sent successfully!</p>
+              )}
+              {submitStatus === "error" && (
+                <p className="text-red-500 text-center mt-2">Failed to send message. Please try again.</p>
+              )}
             </form>
           </div>
 
@@ -71,15 +137,15 @@ const FooterSection = () => {
               <ul className="space-y-4 text-gray-400">
                 <li className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-gray-500 mt-0.5" />
-                  <span>Based in India, working with clients worldwide</span>
+                  <span>Passionate about Technology & Innovation</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <ArrowUpRight className="w-5 h-5 text-gray-500 mt-0.5" />
-                  <span>Open for freelance, collabs & internships</span>
+                  <span>Open for Collabs & Internships</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-lg leading-none">⚡</span>
-                  <span>Full-stack, UI/UX & interactive experiences</span>
+                  <span>Full-Stack, UI/UX & Interactive Experiences</span>
                 </li>
               </ul>
             </div>
