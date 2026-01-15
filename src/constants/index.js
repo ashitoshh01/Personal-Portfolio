@@ -11,6 +11,12 @@ const flavorlists = [
     rotation: "rotate-[8deg]",
     link: "https://officeordue.vercel.app",
   },
+  {
+    name: "ReachFirst",
+    color: "purple",
+    rotation: "rotate-[-8deg]",
+    link: "https://reachfirst.vercel.app",
+  },
 ];
 
 const nutrientLists = [

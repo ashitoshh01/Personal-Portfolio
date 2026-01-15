@@ -30,7 +30,7 @@ const FlavorSlider = () => {
       });
 
       tl.to(".flavor-section", {
-        x: "-100vw",
+        x: "-150vw",
         ease: "none",
         force3D: true,
       });
@@ -83,9 +83,9 @@ const FlavorSlider = () => {
         {flavorlists.map((flavor) => (
           <div
             key={flavor.name}
-            className={`relative z-30 ${["DoOrDue", "OfficeOrDue"].includes(flavor.name) ? "lg:w-[50vw] w-[90vw] lg:h-[85vh] md:w-[80vw] md:h-[65vh] h-[450px]" : "lg:w-[50vw] w-[90vw] lg:h-[70vh] md:w-[80vw] md:h-[50vh] h-[400px]"} flex-none ${flavor.rotation}`}
+            className={`relative z-30 ${["DoOrDue", "OfficeOrDue", "ReachFirst"].includes(flavor.name) ? "lg:w-[50vw] w-[90vw] lg:h-[85vh] md:w-[80vw] md:h-[65vh] h-[450px]" : "lg:w-[50vw] w-[90vw] lg:h-[70vh] md:w-[80vw] md:h-[50vh] h-[400px]"} flex-none ${flavor.rotation}`}
           >
-            {!["DoOrDue", "OfficeOrDue"].includes(flavor.name) && (
+            {!["DoOrDue", "OfficeOrDue", "ReachFirst"].includes(flavor.name) && (
               <img
                 src={`/Personal-Portfolio/images/${flavor.color}-bg.svg`}
                 alt=""
@@ -95,19 +95,19 @@ const FlavorSlider = () => {
             )}
 
             <img
-              src={flavor.name === "DoOrDue" ? "/Personal-Portfolio/images/DoOrDue.png" : flavor.name === "OfficeOrDue" ? "/Personal-Portfolio/images/OfficeOrDue.png" : `/Personal-Portfolio/images/${flavor.color}-drink.webp`}
+              src={flavor.name === "DoOrDue" ? "/Personal-Portfolio/images/DoOrDue.png" : flavor.name === "OfficeOrDue" ? "/Personal-Portfolio/images/OfficeOrDue.png" : flavor.name === "ReachFirst" ? "/Personal-Portfolio/images/ReachFirst.png" : `/Personal-Portfolio/images/${flavor.color}-drink.webp`}
               alt=""
               className={
-                ["DoOrDue", "OfficeOrDue"].includes(flavor.name)
+                ["DoOrDue", "OfficeOrDue", "ReachFirst"].includes(flavor.name)
                   ? "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-full max-h-full rounded-[35px]"
                   : "drinks object-contain"
               }
-              style={["DoOrDue", "OfficeOrDue"].includes(flavor.name) ? { borderRadius: "35px" } : {}}
+              style={["DoOrDue", "OfficeOrDue", "ReachFirst"].includes(flavor.name) ? { borderRadius: "35px" } : {}}
               loading="eager"
               onLoad={() => ScrollTrigger.refresh()}
             />
 
-            {!["DoOrDue", "OfficeOrDue"].includes(flavor.name) && (
+            {!["DoOrDue", "OfficeOrDue", "ReachFirst"].includes(flavor.name) && (
               <img
                 src={`/Personal-Portfolio/images/${flavor.color}-elements.svg`}
                 alt=""
@@ -116,7 +116,7 @@ const FlavorSlider = () => {
               />
             )}
 
-            {!["DoOrDue", "OfficeOrDue"].includes(flavor.name) && <h1>{flavor.name}</h1>}
+            {!["DoOrDue", "OfficeOrDue", "ReachFirst"].includes(flavor.name) && <h1>{flavor.name}</h1>}
 
             <button
               onClick={() => window.open(flavor.link || `/project/${flavor.name.toLowerCase().replace(/\s+/g, "-")}`, "_blank")}
