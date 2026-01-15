@@ -93,7 +93,7 @@ const HomePage = () => {
 
 const App = () => {
   return (
-    <BrowserRouter basename="/Personal-Portfolio/">
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/project/:projectId" element={<ProjectDetails />} />
