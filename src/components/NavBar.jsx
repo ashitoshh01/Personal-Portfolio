@@ -13,7 +13,7 @@ const NavBar = () => {
     <>
       {/* Logo */}
       <div className="fixed top-0 left-0 z-50 md:p-9 p-3">
-        <img src="/Personal-Portfolio/ashitosh-logo.png" alt="Ashitosh Lavhate" className="md:w-36 w-32 -mt-3" />
+        <img src="/ashitosh-logo.png" alt="Ashitosh Lavhate" className="md:w-36 w-32 -mt-3" />
       </div>
 
       {/* Tubelight Navigation */}

@@ -45,13 +45,13 @@ const VideoPinSection = () => {
         }}
         className="size-full video-box"
       >
-        <video src="/Personal-Portfolio/videos/pin-video.mp4" playsInline muted loop autoPlay />
+        <video src="/videos/pin-video.mp4" playsInline muted loop autoPlay />
 
         <div className="abs-center md:scale-100 scale-200">
-          <img src="/Personal-Portfolio/images/circle-text.svg" alt="" className="spin-circle" />
+          <img src="/images/circle-text.svg" alt="" className="spin-circle" />
           <div className="play-btn">
             <img
-              src="/Personal-Portfolio/images/play.svg"
+              src="/images/play.svg"
               alt=""
               className="size-[3vw] ml-[.5vw]"
             />

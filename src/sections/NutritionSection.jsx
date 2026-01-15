@@ -19,7 +19,7 @@ const TESTIMONIALS = [
     role: "Tech Startup Founder",
     rating: 5,
     review: "Working with Ashitosh was an absolute game-changer for our startup. The website they delivered exceeded all expectations - modern, fast, and perfectly captures our brand vision. Highly recommend!",
-    avatarUrl: "/Personal-Portfolio/client1.png",
+    avatarUrl: "/client1.png",
   },
   {
     id: "testimonial-2",
@@ -27,7 +27,7 @@ const TESTIMONIALS = [
     role: "Marketing Director",
     rating: 5,
     review: "Ashitosh transformed our outdated website into a stunning, conversion-focused platform. Their attention to detail and creative approach resulted in a 40% increase in user engagement. Outstanding work!",
-    avatarUrl: "/Personal-Portfolio/client2.png",
+    avatarUrl: "/client2.png",
   },
   {
     id: "testimonial-3",
@@ -35,7 +35,7 @@ const TESTIMONIALS = [
     role: "CEO, TechVision Inc",
     rating: 4.5,
     review: "Professional, creative, and incredibly skilled. Ashitosh delivered our e-commerce platform ahead of schedule with exceptional quality. The animations and user experience are top-notch!",
-    avatarUrl: "/Personal-Portfolio/client3.png",
+    avatarUrl: "/client3.png",
   },
   {
     id: "testimonial-4",
@@ -43,7 +43,7 @@ const TESTIMONIALS = [
     role: "Startup Co-Founder",
     rating: 5,
     review: "From concept to launch, Ashitosh made the entire process seamless. They understood our vision perfectly and created a beautiful, responsive website that our users love. Can't recommend enough!",
-    avatarUrl: "/Personal-Portfolio/client4.png",
+    avatarUrl: "/client4.png",
   },
   {
     id: "testimonial-5",
@@ -51,7 +51,7 @@ const TESTIMONIALS = [
     role: "Creative Director",
     rating: 5,
     review: "Ashitosh's design and development skills are exceptional. They created a portfolio website that perfectly showcases our agency's work with smooth animations and a premium feel. Absolutely brilliant!",
-    avatarUrl: "/Personal-Portfolio/client5.png",
+    avatarUrl: "/client5.png",
   },
 ];
 

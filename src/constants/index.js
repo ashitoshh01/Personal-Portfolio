@@ -29,23 +29,23 @@ const nutrientLists = [
 
 const cards = [
   {
-    src: "/Personal-Portfolio/images/x.png",
+    src: "/images/x.png",
     rotation: "rotate-z-[-10deg]",
     name: "Madison",
-    img: "/Personal-Portfolio/images/x.png",
+    img: "/images/x.png",
     translation: "translate-y-[-5%]",
   },
   {
-    src: "/Personal-Portfolio/images/instagram.jpg",
+    src: "/images/instagram.jpg",
     rotation: "rotate-z-[4deg]",
     name: "Alexander",
-    img: "/Personal-Portfolio/images/instagram.jpg",
+    img: "/images/instagram.jpg",
   },
   {
-    src: "/Personal-Portfolio/images/github.png",
+    src: "/images/github.png",
     rotation: "rotate-z-[-10deg]",
     name: "Pinsry",
-    img: "/Personal-Portfolio/images/github.png",
+    img: "/images/github.png",
     translation: "translate-y-[5%]",
   },
 ];

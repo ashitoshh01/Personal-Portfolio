@@ -87,7 +87,7 @@ const FlavorSlider = () => {
           >
             {!["DoOrDue", "OfficeOrDue", "ReachFirst"].includes(flavor.name) && (
               <img
-                src={`/Personal-Portfolio/images/${flavor.color}-bg.svg`}
+                src={`/images/${flavor.color}-bg.svg`}
                 alt=""
                 className="absolute bottom-0 w-full h-auto"
                 loading="eager"
@@ -95,7 +95,7 @@ const FlavorSlider = () => {
             )}
 
             <img
-              src={flavor.name === "DoOrDue" ? "/Personal-Portfolio/images/DoOrDue.png" : flavor.name === "OfficeOrDue" ? "/Personal-Portfolio/images/OfficeOrDue.png" : flavor.name === "ReachFirst" ? "/Personal-Portfolio/images/ReachFirst.png" : `/Personal-Portfolio/images/${flavor.color}-drink.webp`}
+              src={flavor.name === "DoOrDue" ? "/images/DoOrDue.png" : flavor.name === "OfficeOrDue" ? "/images/OfficeOrDue.png" : flavor.name === "ReachFirst" ? "/images/ReachFirst.png" : `/images/${flavor.color}-drink.webp`}
               alt=""
               className={
                 ["DoOrDue", "OfficeOrDue", "ReachFirst"].includes(flavor.name)
@@ -109,7 +109,7 @@ const FlavorSlider = () => {
 
             {!["DoOrDue", "OfficeOrDue", "ReachFirst"].includes(flavor.name) && (
               <img
-                src={`/Personal-Portfolio/images/${flavor.color}-elements.svg`}
+                src={`/images/${flavor.color}-elements.svg`}
                 alt=""
                 className="elements w-full h-auto"
                 loading="eager"
