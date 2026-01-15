@@ -31,22 +31,25 @@ const cards = [
   {
     src: "/images/x.png",
     rotation: "rotate-z-[-10deg]",
-    name: "Madison",
+    name: "X (Twitter)",
     img: "/images/x.png",
     translation: "translate-y-[-5%]",
+    link: "https://twitter.com/ashitosh01"
   },
   {
-    src: "/images/instagram.jpg",
+    src: "/images/linkedin.png",
     rotation: "rotate-z-[4deg]",
-    name: "Alexander",
-    img: "/images/instagram.jpg",
+    name: "LinkedIn",
+    img: "/images/linkedin.png",
+    link: "https://www.linkedin.com/in/ashitosh-lavhate-5b1b3b1b3/"
   },
   {
     src: "/images/github.png",
     rotation: "rotate-z-[-10deg]",
-    name: "Pinsry",
+    name: "GitHub",
     img: "/images/github.png",
     translation: "translate-y-[5%]",
+    link: "https://github.com/ashitoshh01"
   },
 ];
 

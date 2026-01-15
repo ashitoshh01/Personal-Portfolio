@@ -92,8 +92,8 @@ const TestimonialSection = () => {
   return (
     <section ref={sectionRef} className="testimonials-section">
       <div className="absolute size-full flex flex-col items-center pt-[5vw]">
-        <h1 className="text-black first-title">Follow</h1>
-        <h1 className="text-light-brown sec-title">Me on</h1>
+        <h1 className="text-black first-title">LET'S CONNECT</h1>
+        <h1 className="text-light-brown sec-title">ON</h1>
 
       </div>
 
@@ -101,7 +101,8 @@ const TestimonialSection = () => {
         {cards.map((card, index) => (
           <div
             key={index}
-            className={`vd-card ${card.translation} ${card.rotation}`}
+            className={`vd-card ${card.translation} ${card.rotation} cursor-pointer`}
+            onClick={() => card.link && window.open(card.link, "_blank")}
           >
             <img
               src={card.img}
