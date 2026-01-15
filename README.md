@@ -63,11 +63,5 @@ I usually reply within **24 hours**.
 
 ---
 
-## 📜 License
-
-This project is for personal portfolio use.  
-All rights reserved © 2026 **Ashitosh Lavhate**.
-
----
-
 ⭐ If you like my work, feel free to star the repo!
+
