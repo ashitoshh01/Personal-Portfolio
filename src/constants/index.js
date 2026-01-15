@@ -1,13 +1,15 @@
 const flavorlists = [
   {
-    name: "Chocolate Milk",
+    name: "DoOrDue",
     color: "brown",
     rotation: "rotate-[-8deg]",
+    link: "https://doordue.vercel.app",
   },
   {
-    name: "Stawberry Milk",
-    color: "red",
+    name: "OfficeOrDue",
+    color: "blue",
     rotation: "rotate-[8deg]",
+    link: "https://officeordue.vercel.app",
   },
 ];
 

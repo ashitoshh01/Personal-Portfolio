@@ -83,9 +83,9 @@ const FlavorSlider = () => {
         {flavorlists.map((flavor) => (
           <div
             key={flavor.name}
-            className={`relative z-30 ${flavor.name === "Chocolate Milk" ? "lg:w-[50vw] w-[90vw] lg:h-[85vh] md:w-[80vw] md:h-[65vh] h-[450px]" : "lg:w-[50vw] w-[90vw] lg:h-[70vh] md:w-[80vw] md:h-[50vh] h-[400px]"} flex-none ${flavor.rotation}`}
+            className={`relative z-30 ${["DoOrDue", "OfficeOrDue"].includes(flavor.name) ? "lg:w-[50vw] w-[90vw] lg:h-[85vh] md:w-[80vw] md:h-[65vh] h-[450px]" : "lg:w-[50vw] w-[90vw] lg:h-[70vh] md:w-[80vw] md:h-[50vh] h-[400px]"} flex-none ${flavor.rotation}`}
           >
-            {flavor.name !== "Chocolate Milk" && (
+            {!["DoOrDue", "OfficeOrDue"].includes(flavor.name) && (
               <img
                 src={`/Personal-Portfolio/images/${flavor.color}-bg.svg`}
                 alt=""
@@ -95,14 +95,19 @@ const FlavorSlider = () => {
             )}
 
             <img
-              src={flavor.name === "Chocolate Milk" ? "/Personal-Portfolio/images/Talktwirl.svg" : `/Personal-Portfolio/images/${flavor.color}-drink.webp`}
+              src={flavor.name === "DoOrDue" ? "/Personal-Portfolio/images/DoOrDue.png" : flavor.name === "OfficeOrDue" ? "/Personal-Portfolio/images/OfficeOrDue.png" : `/Personal-Portfolio/images/${flavor.color}-drink.webp`}
               alt=""
-              className="drinks object-contain"
+              className={
+                ["DoOrDue", "OfficeOrDue"].includes(flavor.name)
+                  ? "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-full max-h-full rounded-[35px]"
+                  : "drinks object-contain"
+              }
+              style={["DoOrDue", "OfficeOrDue"].includes(flavor.name) ? { borderRadius: "35px" } : {}}
               loading="eager"
               onLoad={() => ScrollTrigger.refresh()}
             />
 
-            {flavor.name !== "Chocolate Milk" && (
+            {!["DoOrDue", "OfficeOrDue"].includes(flavor.name) && (
               <img
                 src={`/Personal-Portfolio/images/${flavor.color}-elements.svg`}
                 alt=""
@@ -111,10 +116,10 @@ const FlavorSlider = () => {
               />
             )}
 
-            {flavor.name !== "Chocolate Milk" && <h1>{flavor.name}</h1>}
+            {!["DoOrDue", "OfficeOrDue"].includes(flavor.name) && <h1>{flavor.name}</h1>}
 
             <button
-              onClick={() => window.open(`/project/${flavor.name.toLowerCase().replace(/\s+/g, "-")}`, "_blank")}
+              onClick={() => window.open(flavor.link || `/project/${flavor.name.toLowerCase().replace(/\s+/g, "-")}`, "_blank")}
               className="absolute bottom-5 right-5 bg-white text-black font-semibold px-6 py-2 rounded-full text-sm hover:bg-opacity-90 transition-all"
             >
               See Details
