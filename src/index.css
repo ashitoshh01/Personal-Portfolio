@@ -1,3 +1,4 @@
+/* Force re-analysis */
 @import url("https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&display=swap");
 @import "tailwindcss";
 
@@ -64,7 +65,7 @@ body::-webkit-scrollbar {
   }
 
   .hero-container {
-    @apply relative bg-black w-screen h-dvh overflow-hidden;
+    @apply relative bg-black w-full h-dvh overflow-hidden;
 
     .hero-content {
       @apply relative z-10 w-full h-full flex flex-col justify-center items-center 2xl:pt-0 md:pt-0 pt-0;
@@ -253,7 +254,7 @@ body::-webkit-scrollbar {
     @apply bg-white relative w-full min-h-dvh flex flex-col justify-center overflow-hidden;
 
     .pin-box {
-      @apply flex md:flex-row flex-col items-center justify-center w-full md:ps-52 ps-0 relative md:absolute md:bottom-32 bottom-auto md:gap-0 gap-8 py-10 md:py-0;
+      @apply flex md:flex-row flex-col items-center justify-center w-full md:ps-52 ps-0 relative md:absolute md:top-1/2 md:-translate-y-1/2 bottom-auto md:gap-0 gap-8 py-10 md:py-0;
 
       .vd-card {
         @apply md:w-96 w-[80vw] flex-none md:rounded-[2vw] rounded-3xl md:-ms-44 ms-0 overflow-hidden relative border-[.5vw] border-milk aspect-[4/5] md:aspect-auto;

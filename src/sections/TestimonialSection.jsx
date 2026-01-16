@@ -60,7 +60,7 @@ const TestimonialSection = () => {
         const pinTl = gsap.timeline({
           scrollTrigger: {
             trigger: ".testimonials-section",
-            start: "10% top",
+            start: "top top",
             end: "200% top",
             scrub: 1,
             pin: true,

@@ -2,11 +2,14 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { useMediaQuery } from "react-responsive";
+import { useEffect, useRef } from "react";
 
 const VideoPinSection = () => {
   const isMobile = useMediaQuery({
     query: "(max-width: 768px)",
   });
+
+  const videoRef = useRef(null);
 
   useGSAP(() => {
     if (!isMobile) {
@@ -33,7 +36,15 @@ const VideoPinSection = () => {
 
       return () => clearTimeout(timer);
     }
-  });
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch((error) => {
+        console.error("Video play failed:", error);
+      });
+    }
+  }, []);
 
   return (
     <section className="vd-pin-section">
@@ -45,7 +56,15 @@ const VideoPinSection = () => {
         }}
         className="size-full video-box"
       >
-        <video src="/videos/pin-video.mp4" playsInline muted loop autoPlay />
+        <video
+          ref={videoRef}
+          src="/videos/pin-video.mp4"
+          playsInline
+          muted
+          loop
+          autoPlay
+          className="size-full object-cover"
+        />
 
         <div className="abs-center md:scale-100 scale-200">
           <img src="/images/circle-text.svg" alt="" className="spin-circle" />
