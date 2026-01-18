@@ -9,6 +9,7 @@ import {
   CardsContainer,
   CardTransformed,
 } from "../components/ui/animated-cards-stack";
+import TechOrbit from "../components/TechOrbit";
 
 // Tech stack data is imported from constants
 
@@ -53,35 +54,47 @@ const NutritionSection = () => {
             </div>
           </div>
 
-          {/* Cards centered */}
-          <div className="flex-1 flex items-center justify-center">
-            <CardsContainer className="h-[450px] w-[90%] max-w-md md:max-w-lg">
-              {techStack.map((tech, index) => (
-                <CardTransformed
-                  key={`tech-${index}`}
-                  arrayLength={techStack.length}
-                  index={index + 1}
-                  variant="light"
-                  className="bg-white border-white border-[0.3rem] backdrop-blur-md shadow-lg"
-                >
-                  <div className="flex flex-col items-center justify-start space-y-3 text-center h-full px-4 py-5">
-                    <h3 className="text-[#523122] text-2xl md:text-3xl font-bold tracking-tight border-b-4 border-[#a26833] pb-4 w-full mb-2">
-                      {tech.category}
-                    </h3>
-                    <ul className="flex-1 flex flex-col items-center justify-center gap-3 w-full">
-                      {tech.technologies.map((technology, techIndex) => (
-                        <li
-                          key={techIndex}
-                          className="text-[#523122] text-lg md:text-xl font-bold w-full px-4 py-3 bg-gradient-to-r from-[#f5e6d3] to-[#fdf6ed] rounded-lg border-2 border-[#d4a574] shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 list-none"
-                        >
-                          {technology}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </CardTransformed>
-              ))}
-            </CardsContainer>
+          {/* Cards and Orbit Layout */}
+          <div className="flex-1 flex items-center justify-center px-5">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-7xl items-center">
+              {/* Tech Stack Cards */}
+              <div className="flex items-center justify-center">
+                <CardsContainer className="h-[450px] w-full max-w-md">
+                  {techStack.map((tech, index) => (
+                    <CardTransformed
+                      key={`tech-${index}`}
+                      arrayLength={techStack.length}
+                      index={index + 1}
+                      variant="light"
+                      className="bg-white border-white border-[0.3rem] backdrop-blur-md shadow-lg"
+                    >
+                      <div className="flex flex-col items-center justify-start space-y-3 text-center h-full px-4 py-5">
+                        <h3 className="text-[#523122] text-2xl md:text-3xl font-bold tracking-tight border-b-4 border-[#a26833] pb-4 w-full mb-2">
+                          {tech.category}
+                        </h3>
+                        <ul className="flex-1 flex flex-col items-center justify-center gap-3 w-full">
+                          {tech.technologies.map((technology, techIndex) => (
+                            <li
+                              key={techIndex}
+                              className="text-[#523122] text-lg md:text-xl font-bold w-full px-4 py-3 bg-gradient-to-r from-[#f5e6d3] to-[#fdf6ed] rounded-lg border-2 border-[#d4a574] shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 list-none"
+                            >
+                              {technology}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </CardTransformed>
+                  ))}
+                </CardsContainer>
+              </div>
+
+              {/* Tech Orbit - Now visible on all screens */}
+              <div className="flex items-center justify-center">
+                <div className="w-full max-w-md mx-auto">
+                  <TechOrbit />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </ContainerScroll>
