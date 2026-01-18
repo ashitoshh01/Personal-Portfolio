@@ -12,11 +12,23 @@ import TestimonialSection from "./sections/TestimonialSection";
 import FooterSection from "./sections/FooterSection";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProjectDetails from "./pages/ProjectDetails";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { HoloPulse } from "./components/ui/holo-pulse-loader";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const HomePage = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Show loading screen for 2 seconds on initial load
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   // Initialize Lenis for smooth scrolling
   useEffect(() => {
     ScrollTrigger.normalizeScroll(true);
@@ -70,6 +82,11 @@ const HomePage = () => {
       clearTimeout(timer);
     };
   }, []);
+
+  // Show loading screen while loading
+  if (isLoading) {
+    return <HoloPulse />;
+  }
 
   return (
     <main>
