@@ -30,7 +30,7 @@ const FlavorSlider = () => {
       });
 
       tl.to(".flavor-content-wrapper", {
-        x: "-150vw",
+        x: "-215vw",
         ease: "none",
         force3D: true,
       });
@@ -83,10 +83,10 @@ const FlavorSlider = () => {
         {flavorlists.map((flavor) => (
           <div
             key={flavor.name}
-            className={`relative z-30 ${["DoOrDue", "OfficeOrDue", "ReachFirst"].includes(flavor.name) ? "lg:w-[50vw] w-[85vw] lg:h-[85vh] md:w-[80vw] md:h-[65vh] h-[450px]" : "lg:w-[50vw] w-[85vw] lg:h-[70vh] md:w-[80vw] md:h-[50vh] h-[400px]"} flex-none ${flavor.rotation}`}
+            className={`relative z-30 ${["DoOrDue", "OfficeOrDue", "ReachFirst", "DishGuru"].includes(flavor.name) ? "lg:w-[50vw] w-[85vw] lg:h-[85vh] md:w-[80vw] md:h-[65vh] h-[450px]" : "lg:w-[50vw] w-[85vw] lg:h-[70vh] md:w-[80vw] md:h-[50vh] h-[400px]"} flex-none ${flavor.rotation}`}
           >
             <img
-              src={flavor.name === "DoOrDue" ? "/images/DoOrDue.png" : flavor.name === "OfficeOrDue" ? "/images/OfficeOrDue.png" : "/images/ReachFirst.png"}
+              src={flavor.name === "DoOrDue" ? "/images/DoOrDue.png" : flavor.name === "OfficeOrDue" ? "/images/OfficeOrDue.png" : flavor.name === "ReachFirst" ? "/images/ReachFirst.png" : "/images/DishGuru.jpg"}
               alt={flavor.name}
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-full max-h-full rounded-[35px] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.6)]"
               style={{ borderRadius: "35px" }}

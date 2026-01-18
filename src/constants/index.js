@@ -6,16 +6,22 @@ const flavorlists = [
     link: "https://doordue.vercel.app",
   },
   {
+    name: "ReachFirst",
+    color: "purple",
+    rotation: "rotate-[8deg]",
+    link: "https://reachfirst.vercel.app",
+  },
+  {
     name: "OfficeOrDue",
     color: "blue",
-    rotation: "rotate-[8deg]",
+    rotation: "rotate-[-8deg]",
     link: "https://officeordue.vercel.app",
   },
   {
-    name: "ReachFirst",
-    color: "purple",
-    rotation: "rotate-[-8deg]",
-    link: "https://reachfirst.vercel.app",
+    name: "DishGuru",
+    color: "orange",
+    rotation: "rotate-[8deg]",
+    link: "https://dish-guru.vercel.app/",
   },
 ];
 
