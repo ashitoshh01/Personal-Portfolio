@@ -27,6 +27,73 @@ const nutrientLists = [
   { label: "Iron", amount: "1mg" },
 ];
 
+const techStack = [
+  {
+    category: "Frontend Development",
+    technologies: [
+      "React.js",
+      "Next.js",
+      "Bootstrap",
+      "Figma (UI/UX Design)"
+    ],
+    rotation: "rotate-z-[-8deg]",
+    translation: "translate-y-[-3%]",
+  },
+  {
+    category: "Backend Development",
+    technologies: [
+      "Express.js",
+      "Node.js",
+      "Django"
+    ],
+    rotation: "rotate-z-[5deg]",
+    translation: "translate-y-[2%]",
+  },
+  {
+    category: "Core Programming",
+    technologies: [
+      "Python",
+      "Java",
+      "C",
+      "C++"
+    ],
+    rotation: "rotate-z-[-6deg]",
+    translation: "translate-y-[-4%]",
+  },
+  {
+    category: "Database & Backend Services",
+    technologies: [
+      "SQL",
+      "MongoDB",
+      "Firebase",
+      "Supabase"
+    ],
+    rotation: "rotate-z-[7deg]",
+    translation: "translate-y-[3%]",
+  },
+  {
+    category: "Tools & Platforms",
+    technologies: [
+      "Git",
+      "GitHub",
+      "Tableau",
+      "Ultimaker Cura"
+    ],
+    rotation: "rotate-z-[-5deg]",
+    translation: "translate-y-[-2%]",
+  },
+  {
+    category: "Other / Core Skills",
+    technologies: [
+      "Problem Solving",
+      "Soft Skills",
+      "Using AI Efficiently"
+    ],
+    rotation: "rotate-z-[6deg]",
+    translation: "translate-y-[4%]",
+  },
+];
+
 const cards = [
   {
     src: "/images/card_x.png",
@@ -53,4 +120,4 @@ const cards = [
   },
 ];
 
-export { flavorlists, nutrientLists, cards };
+export { flavorlists, nutrientLists, cards, techStack };
