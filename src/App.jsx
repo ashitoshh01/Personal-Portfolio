@@ -10,8 +10,9 @@ import NutritionSection from "./sections/NutritionSection";
 import BenefitSection from "./sections/BenefitSection";
 import TestimonialSection from "./sections/TestimonialSection";
 import FooterSection from "./sections/FooterSection";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import ProjectDetails from "./pages/ProjectDetails";
+import AllProjects from "./pages/AllProjects";
 import { useEffect, useState } from "react";
 import { HoloPulse } from "./components/ui/holo-pulse-loader";
 
@@ -19,6 +20,23 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const HomePage = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
+
+  // Handle auto-scroll from navigation state
+  useEffect(() => {
+    if (location.state?.scrollTo === "flavor" && window.lenis) {
+      // Delay slightly to ensure page load/transition
+      const timer = setTimeout(() => {
+        const element = document.getElementById("flavor");
+        if (element) {
+          window.lenis.scrollTo(element, { offset: 0, duration: 1.5 });
+          // Clear state so it doesn't happen on reload
+          window.history.replaceState({}, document.title);
+        }
+      }, 500); // Wait for loading screen if any, or just transition
+      return () => clearTimeout(timer);
+    }
+  }, [location, isLoading]);
 
   // Show loading screen for 2 seconds on initial load
   useEffect(() => {
@@ -47,6 +65,12 @@ const HomePage = () => {
     // Make lenis available globally for other components to use
     window.lenis = lenis;
 
+    // Check for immediate scroll if loading is done
+    if (!isLoading && location.state?.scrollTo === "flavor") {
+      const element = document.getElementById("flavor");
+      if (element) lenis.scrollTo(element);
+    }
+
     // Synchronize Lenis with GSAP ScrollTrigger
     lenis.on('scroll', ScrollTrigger.update);
 
@@ -63,7 +87,7 @@ const HomePage = () => {
       lenis.destroy();
       window.lenis = null;
     };
-  }, []);
+  }, [isLoading]); // Re-run if loading state changes to ensure lenis is ready
 
   // Fix for first-time load: refresh ScrollTrigger after all content loads
   useEffect(() => {
@@ -115,6 +139,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/all-projects" element={<AllProjects />} />
         <Route path="/project/:projectId" element={<ProjectDetails />} />
       </Routes>
     </BrowserRouter>

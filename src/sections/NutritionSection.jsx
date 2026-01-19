@@ -37,7 +37,7 @@ const NutritionSection = () => {
             <div className="relative inline-block">
               <div className="general-title relative flex flex-col justify-center items-center gap-3">
                 <div className="overflow-hidden place-self-start">
-                  <h1 className="nutrition-title text-black">Tech</h1>
+                  <h1 className="nutrition-title text-black">Tech Stack</h1>
                 </div>
                 <div
                   style={{
