@@ -15,7 +15,7 @@ const cardVariants = cva("absolute will-change-transform", {
     variant: {
       dark: "flex size-full flex-col items-center justify-center gap-6 rounded-2xl border border-stone-700/50 bg-accent-foreground/80 p-6 backdrop-blur-md",
       light:
-        "flex size-full flex-col items-center justify-center gap-6 rounded-2xl border  bg-accent bg-background/80 p-6 backdrop-blur-md ",
+        "flex size-full flex-col items-center justify-center gap-6 rounded-2xl border bg-accent bg-background/80 p-6 backdrop-blur-md",
     },
   },
   defaultVariants: {
@@ -64,7 +64,7 @@ export const CardsContainer = ({ children, className, ...props }) => {
     <div
       ref={containerRef}
       className={cn("relative", className)}
-      style={{ perspective: "1000px", ...props.style }}
+      style={{ perspective: "1200px", ...props.style }}
       {...props}
     >
       {children}
@@ -78,9 +78,9 @@ export const CardTransformed = React.forwardRef(
     {
       arrayLength,
       index,
-      incrementY = 10,
-      incrementZ = 10,
-      incrementRotation = -index + 90,
+      incrementY = 10,  // Reduced for tighter vertical stack
+      incrementZ = 20,
+      incrementRotation = 2, // Subtle rotation
       className,
       variant,
       style,
@@ -90,42 +90,83 @@ export const CardTransformed = React.forwardRef(
   ) => {
     const { scrollYProgress } = useContainerScrollContext();
 
-    // Calculate scroll ranges - each card gets equal portion of scroll progress
     const cardProgress = 1 / arrayLength;
-    const start = (index - 1) * cardProgress;
-    const end = index * cardProgress;
-    const range = React.useMemo(() => [start, end], [start, end]);
-    const rotateRange = [range[0], range[1]];
+    const cardStart = (index - 1) * cardProgress;
+    const cardReveal = cardStart + cardProgress * 0.4;
+    const cardEnd = index * cardProgress;
 
-    // Cards stay at 0 until their turn, then swipe up (last card stays visible)
+    // Correct Stacking Logic:
+    // Card 1 (Front) -> Offset 0
+    // Card 2 (Behind) -> Offset 1
+    // ...
+    const stackOffset = index - 1; // 0, 1, 2...
+
+    // Initial Stack Positions (Start state)
+    const initialY = stackOffset * incrementY;          // Cards stack downwards
+    const initialZ = stackOffset * -incrementZ;         // Cards stack backwards in depth
+    const initialScale = 1 - stackPositionToScale(stackOffset);
+    const initialRotate = stackOffset % 2 === 0 ? stackOffset * incrementRotation : stackOffset * -incrementRotation; // Alternating subtle rotation
+
     const isLastCard = index === arrayLength;
+
+    // Y Position: Starts at stack offset -> Moves to Center -> Slides Up
     const y = useTransform(
-      scrollYProgress, 
-      [start, end], 
-      ["0vh", isLastCard ? "0vh" : "-150vh"]
+      scrollYProgress,
+      [0, cardStart, cardReveal, cardEnd],
+      [
+        initialY,      // Scroll 0: In Stack
+        initialY,      // Start of this card's phase: Still in Stack
+        0,             // Reveal: Move to exact center
+        isLastCard ? 0 : -150 // End: Slide up and away
+      ]
     );
-    const rotate = useTransform(scrollYProgress, rotateRange, [
-      incrementRotation / 4,
-      0,
-    ]);
 
-    const transform = useMotionTemplate`translate(-50%, -50%) translateY(${y}) translateZ(${index * incrementZ}px) rotate(${rotate}deg)`;
+    // Z Position: Starts deep -> Moves to 0 (Front)
+    const z = useTransform(
+      scrollYProgress,
+      [0, cardStart, cardReveal],
+      [initialZ, initialZ, 0]
+    );
 
-    const dx = useTransform(scrollYProgress, rotateRange, [4, 0]);
-    const dy = useTransform(scrollYProgress, rotateRange, [4, 12]);
-    const blur = useTransform(scrollYProgress, rotateRange, [2, 24]);
-    const alpha = useTransform(scrollYProgress, rotateRange, [0.15, 0.2]);
-    const filter =
-      variant === "light"
-        ? useMotionTemplate`drop-shadow(${dx}px ${dy}px ${blur}px rgba(0,0,0,${alpha}))`
-        : "none";
+    // Scale: Starts small -> Scales to 1
+    const scale = useTransform(
+      scrollYProgress,
+      [0, cardStart, cardReveal],
+      [initialScale, initialScale, 1]
+    );
+
+    // Rotation: Starts rotated -> Straightens out
+    const rotate = useTransform(
+      scrollYProgress,
+      [0, cardStart, cardReveal],
+      [initialRotate, initialRotate, 0]
+    );
+
+    // Opacity: Always visible, fades out only at very end
+    const opacity = useTransform(
+      scrollYProgress,
+      [0, cardReveal, cardEnd],
+      [
+        1,  // Visible start
+        1,  // Visible center
+        isLastCard ? 1 : 0 // Fade out end
+      ]
+    );
+
+    const transform = useMotionTemplate`translate(-50%, -50%) translateY(${y}px) translateZ(${z}px) rotate(${rotate}deg) scale(${scale})`;
+
+    // Shadow dynamic
+    const shadowOpacity = useTransform(scrollYProgress, [cardStart, cardReveal], [0.1, 0.3]);
+    const filter = useMotionTemplate`drop-shadow(0px 10px 20px rgba(0,0,0,${shadowOpacity}))`;
 
     const cardStyle = {
       top: "50%",
       left: "50%",
       transform,
+      opacity,
       backfaceVisibility: "hidden",
-      zIndex: (arrayLength - index) * incrementZ,
+      // Z-index ensures correct layering: Card 1 is top (arrayLength), Last card is bottom (1)
+      zIndex: arrayLength - index,
       filter,
       ...style,
     };
@@ -141,6 +182,10 @@ export const CardTransformed = React.forwardRef(
   }
 );
 CardTransformed.displayName = "CardTransformed";
+
+function stackPositionToScale(offset) {
+  return offset * 0.05; // 0, 0.05, 0.10...
+}
 
 export const ReviewStars = React.forwardRef(
   ({ rating, maxRating = 5, className, ...props }, ref) => {
