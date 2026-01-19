@@ -54,7 +54,7 @@ const FlavorTitle = () => {
   });
 
   return (
-    <div className="general-title col-center h-full 2xl:gap-32 xl:gap-24 gap-16">
+    <div className="general-title col-center h-full 2xl:gap-32 xl:gap-24 md:gap-16 gap-0">
       <div className="overflow-hidden 2xl:py-0 py-3 first-text-split">
         <h1 className="text-black"> projects</h1>
       </div>
@@ -63,7 +63,7 @@ const FlavorTitle = () => {
         style={{
           clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)",
         }}
-        className="flavor-text-scroll"
+        className="flavor-text-scroll -mt-7 mb-8 md:mt-0 md:mb-0"
       >
         <div className="bg-black pb-5 2xl:pt-0 pt-3 2xl:px-5 px-3">
           <h2 className="text-white">which are</h2>

@@ -99,7 +99,7 @@ const FlavorSlider = () => {
               : ["DoOrDue", "OfficeOrDue", "ReachFirst", "DishGuru"].includes(flavor.name)
                 ? "lg:w-[50vw] w-[85vw] lg:h-[85vh] md:w-[80vw] md:h-[65vh] h-[450px]"
                 : "lg:w-[50vw] w-[85vw] lg:h-[70vh] md:w-[80vw] md:h-[50vh] h-[400px]"
-              } flex-none ${flavor.rotation}`}
+              } flex-none flex items-center justify-center ${flavor.rotation}`}
           >
             {flavor.isSeeMore ? (
               <div
@@ -121,11 +121,11 @@ const FlavorSlider = () => {
                 </div>
               </div>
             ) : (
-              <>
+              <div className="relative inline-flex justify-center items-center max-w-full max-h-full">
                 <img
                   src={flavor.name === "DoOrDue" ? "/images/DoOrDue.png" : flavor.name === "OfficeOrDue" ? "/images/OfficeOrDue.png" : flavor.name === "ReachFirst" ? "/images/ReachFirst.png" : "/images/DishGuru.jpg"}
                   alt={flavor.name}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-full max-h-full rounded-[35px] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.6)]"
+                  className="max-w-full max-h-full w-auto h-auto object-contain rounded-[35px] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.6)]"
                   style={{ borderRadius: "35px" }}
                   loading="eager"
                   onLoad={() => ScrollTrigger.refresh()}
@@ -137,7 +137,7 @@ const FlavorSlider = () => {
                 >
                   See Details
                 </button>
-              </>
+              </div>
             )}
           </div>
         ))}

@@ -82,7 +82,7 @@ body::-webkit-scrollbar {
         }
 
         h1 {
-          @apply uppercase 2xl:text-[8.5rem] md:text-[6.5rem] text-4xl font-bold text-white leading-none tracking-tighter 2xl:px-[1.2vw] px-2 2xl:pb-[1vw] pb-2 2xl:py-0 py-1.5 whitespace-nowrap;
+          @apply uppercase text-[5.5vw] font-bold text-white leading-none tracking-tighter 2xl:px-[1.2vw] px-2 2xl:pb-[1vw] pb-2 2xl:py-0 py-1.5 whitespace-nowrap;
         }
       }
 
@@ -129,7 +129,7 @@ body::-webkit-scrollbar {
     contain: layout style paint;
 
     .flavor-text-scroll {
-      @apply rotate-[-3deg] md:translate-y-5 border-[.5vw] border-white absolute z-10;
+      @apply rotate-[-3deg] md:translate-y-5 border-[.5vw] border-white md:absolute relative z-10;
       will-change: transform;
       transform: translateZ(0);
     }
