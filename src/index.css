@@ -126,10 +126,11 @@ body::-webkit-scrollbar {
     will-change: transform;
     transform: translateZ(0);
     backface-visibility: hidden;
+    contain: layout style paint;
 
     .flavor-text-scroll {
       @apply rotate-[-3deg] md:translate-y-5 border-[.5vw] border-white absolute z-10;
-      will-change: clip-path;
+      will-change: transform;
       transform: translateZ(0);
     }
 
@@ -147,15 +148,18 @@ body::-webkit-scrollbar {
 
     .slider-wrapper {
       @apply lg:h-dvh md:min-h-fit w-full mt-0 md:mt-20 xl:mt-0;
+      contain: layout style;
 
       .flavors {
         @apply h-full w-full flex flex-row items-center lg:justify-start justify-start 2xl:gap-72 lg:gap-52 md:gap-24 gap-5 flex-nowrap;
         will-change: transform;
+        transform: translateZ(0);
         padding-left: 5vw;
         padding-right: 5vw;
 
         >div {
           @apply flex-none;
+          contain: layout style;
         }
 
         .drinks {

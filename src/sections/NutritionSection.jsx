@@ -9,7 +9,6 @@ import {
   CardsContainer,
   CardTransformed,
 } from "../components/ui/animated-cards-stack";
-import TechOrbit from "../components/TechOrbit";
 
 // Tech stack data is imported from constants
 
@@ -56,10 +55,10 @@ const NutritionSection = () => {
 
           {/* Cards and Orbit Layout */}
           <div className="flex-1 flex items-center justify-center px-5">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-7xl items-center">
-              {/* Tech Stack Cards */}
+            <div className="w-full max-w-2xl mx-auto">
+              {/* Tech Stack Cards - Now full width */}
               <div className="flex items-center justify-center">
-                <CardsContainer className="h-[450px] w-full max-w-md">
+                <CardsContainer className="h-[450px] w-full">
                   {techStack.map((tech, index) => (
                     <CardTransformed
                       key={`tech-${index}`}
@@ -86,13 +85,6 @@ const NutritionSection = () => {
                     </CardTransformed>
                   ))}
                 </CardsContainer>
-              </div>
-
-              {/* Tech Orbit - Now visible on all screens */}
-              <div className="flex items-center justify-center">
-                <div className="w-full max-w-md mx-auto">
-                  <TechOrbit />
-                </div>
               </div>
             </div>
           </div>

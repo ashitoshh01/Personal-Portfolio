@@ -20,12 +20,13 @@ const FlavorSlider = () => {
           trigger: ".flavor-section",
           start: "2% top",
           end: isTablet ? "+=2000" : "+=3500",
-          scrub: 0.5,
+          scrub: 0.3, // Reduced for snappier response
           pin: true,
           anticipatePin: 1,
           fastScrollEnd: true,
           invalidateOnRefresh: true,
-          refreshPriority: 1, // Ensure this calculates last
+          refreshPriority: 1,
+          preventOverlaps: true,
         },
       });
 
@@ -40,7 +41,7 @@ const FlavorSlider = () => {
           trigger: ".flavor-section",
           start: "top top",
           end: "bottom 80%",
-          scrub: 0.5,
+          scrub: 0.3,
           invalidateOnRefresh: true,
         },
       });
