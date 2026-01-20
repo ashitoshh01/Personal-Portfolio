@@ -258,10 +258,10 @@ body::-webkit-scrollbar {
     @apply bg-white relative w-full min-h-dvh flex flex-col justify-center overflow-hidden;
 
     .pin-box {
-      @apply flex md:flex-row flex-col items-center justify-center w-full md:ps-52 ps-0 relative md:absolute md:top-1/2 md:-translate-y-1/2 bottom-auto md:gap-0 gap-8 py-10 md:py-0;
+      @apply flex md:flex-row flex-col items-center justify-center w-full md:ps-52 ps-0 relative md:absolute md:top-1/2 md:-translate-y-1/2 bottom-auto gap-0 py-10 md:py-0;
 
       .vd-card {
-        @apply md:w-96 w-[80vw] flex-none md:rounded-[2vw] rounded-3xl md:-ms-44 ms-0 overflow-hidden relative border-[.5vw] border-milk aspect-[4/5] md:aspect-auto;
+        @apply md:w-96 w-[80vw] flex-none md:rounded-[2vw] rounded-3xl md:-ms-44 ms-0 -mt-[110vw] md:mt-0 first:mt-0 overflow-hidden relative border-[.5vw] border-milk aspect-[4/5] md:aspect-auto;
         will-change: transform;
         transform: translateZ(0);
         backface-visibility: hidden;

@@ -111,7 +111,7 @@ const ProjectImageCard = ({ project, isActive, onClick }) => {
         <motion.div
             layout
             onClick={onClick}
-            className={`relative rounded-[20px] md:rounded-[30px] overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] bg-[#1a1a1a] ${isActive ? "flex-[10]" : "flex-[1] hover:flex-[1.5]"
+            className={`relative overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] bg-[#1a1a1a] ${isActive ? "rounded-[10px] flex-[10]" : "rounded-lg flex-[1] hover:flex-[1.5]"
                 }`}
         >
             {/* Image Layer - Only visible when active */}

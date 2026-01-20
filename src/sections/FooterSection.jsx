@@ -53,86 +53,9 @@ const FooterSection = () => {
         <div className="grid lg:grid-cols-3 gap-10">
 
           {/* Contact Form */}
-          <div className="lg:col-span-2 bg-[#1A1A1A] rounded-3xl p-8 md:p-12 border border-white/5">
-            <p className="text-gray-400 mb-8 text-lg">
-              Tell me about your idea, project or collab. I usually reply within <span className="text-white font-semibold">24 hours</span>.
-            </p>
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-sm text-gray-400 ml-1">Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    placeholder="Your full name"
-                    className="w-full bg-[#262626] border border-white/5 rounded-xl px-4 py-3 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all placeholder:text-gray-600 outline-none text-white"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm text-gray-400 ml-1">Email</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    placeholder="you@example.com"
-                    className="w-full bg-[#262626] border border-white/5 rounded-xl px-4 py-3 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all placeholder:text-gray-600 outline-none text-white"
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-sm text-gray-400 ml-1">Subject</label>
-                <input
-                  type="text"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  placeholder="What's this about?"
-                  className="w-full bg-[#262626] border border-white/5 rounded-xl px-4 py-3 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all placeholder:text-gray-600 outline-none text-white"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-sm text-gray-400 ml-1">Message</label>
-                <textarea
-                  rows={5}
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  placeholder="Share your idea, goals, and timeline..."
-                  className="w-full bg-[#262626] border border-white/5 rounded-xl px-4 py-3 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all placeholder:text-gray-600 resize-none outline-none text-white"
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-white text-black font-bold text-lg py-4 rounded-full hover:bg-gray-200 transition-colors mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? "SENDING..." : "SEND MESSAGE"}
-              </button>
-              {submitStatus === "success" && (
-                <p className="text-green-500 text-center mt-2">Message sent successfully!</p>
-              )}
-              {submitStatus === "error" && (
-                <p className="text-red-500 text-center mt-2">Failed to send message. Please try again.</p>
-              )}
-            </form>
-          </div>
-
-          {/* Side Info */}
-          <div className="space-y-6">
-
+          <div className="lg:col-span-2">
             {/* Quick Info Card */}
-            <div className="bg-[#1A1A1A] rounded-3xl p-8 border border-white/5">
+            <div className="bg-[#1A1A1A] rounded-3xl p-8 border border-white/5 mb-6 -mt-24 relative z-10 shadow-xl">
               <h3 className="text-xl font-semibold mb-6 text-gray-200">Quick info</h3>
               <ul className="space-y-4 text-gray-400">
                 <li className="flex items-start gap-3">
@@ -149,6 +72,88 @@ const FooterSection = () => {
                 </li>
               </ul>
             </div>
+
+            <div className="bg-[#1A1A1A] rounded-3xl p-8 md:p-12 border border-white/5">
+              <p className="text-gray-400 mb-8 text-lg">
+                Tell me about your idea, project or collab. I usually reply within <span className="text-white font-semibold">24 hours</span>.
+              </p>
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-sm text-gray-400 ml-1">Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      placeholder="Your full name"
+                      className="w-full bg-[#262626] border border-white/5 rounded-xl px-4 py-3 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all placeholder:text-gray-600 outline-none text-white"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm text-gray-400 ml-1">Email</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      placeholder="you@example.com"
+                      className="w-full bg-[#262626] border border-white/5 rounded-xl px-4 py-3 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all placeholder:text-gray-600 outline-none text-white"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm text-gray-400 ml-1">Subject</label>
+                  <input
+                    type="text"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                    placeholder="What's this about?"
+                    className="w-full bg-[#262626] border border-white/5 rounded-xl px-4 py-3 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all placeholder:text-gray-600 outline-none text-white"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm text-gray-400 ml-1">Message</label>
+                  <textarea
+                    rows={5}
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    placeholder="Share your idea, goals, and timeline..."
+                    className="w-full bg-[#262626] border border-white/5 rounded-xl px-4 py-3 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all placeholder:text-gray-600 resize-none outline-none text-white"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-white text-black font-bold text-lg py-4 rounded-full hover:bg-gray-200 transition-colors mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? "SENDING..." : "SEND MESSAGE"}
+                </button>
+                {submitStatus === "success" && (
+                  <p className="text-green-500 text-center mt-2">Message sent successfully!</p>
+                )}
+                {submitStatus === "error" && (
+                  <p className="text-red-500 text-center mt-2">Failed to send message. Please try again.</p>
+                )}
+              </form>
+
+            </div>
+          </div>
+
+          {/* Side Info */}
+          <div className="space-y-6">
+
+
 
             {/* Direct Contact Card */}
             <div className="bg-[#1A1A1A] rounded-3xl p-8 border border-white/5">
@@ -178,7 +183,7 @@ const FooterSection = () => {
         </div>
 
       </div>
-    </section>
+    </section >
   );
 };
 

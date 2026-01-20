@@ -19,7 +19,7 @@ const FlavorSlider = () => {
         scrollTrigger: {
           trigger: ".flavor-section",
           start: "2% top",
-          end: isTablet ? "+=2000" : "+=3500",
+          end: isTablet ? "+=5500" : "+=3500",
           scrub: 0.3, // Reduced for snappier response
           pin: true,
           anticipatePin: 1,
@@ -31,7 +31,7 @@ const FlavorSlider = () => {
       });
 
       tl.to(".flavor-content-wrapper", {
-        x: "-215vw",
+        x: isTablet ? "-235vw" : "-215vw",
         ease: "none",
         force3D: true,
       });
@@ -133,7 +133,7 @@ const FlavorSlider = () => {
 
                 <button
                   onClick={() => window.open(flavor.link || `/project/${flavor.name.toLowerCase().replace(/\s+/g, "-")}`, "_blank")}
-                  className="absolute bottom-5 right-5 bg-[#e3a458] text-black font-semibold px-6 py-2 rounded-full text-sm hover:bg-[#d89345] transition-all"
+                  className="absolute -bottom-3.5 right-5 bg-[#e3a458] text-black font-semibold px-6 py-2 rounded-full text-sm hover:bg-[#d89345] transition-all"
                 >
                   See Details
                 </button>

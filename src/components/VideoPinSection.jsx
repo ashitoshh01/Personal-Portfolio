@@ -12,31 +12,29 @@ const VideoPinSection = () => {
   const videoRef = useRef(null);
 
   useGSAP(() => {
-    if (!isMobile) {
-      const timer = setTimeout(() => {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: ".vd-pin-section",
-            start: "top top",
-            end: "200% top",
-            scrub: 1.5,
-            pin: true,
-            invalidateOnRefresh: true,
-            refreshPriority: 1,
-          },
-        });
+    const timer = setTimeout(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".vd-pin-section",
+          start: "top top",
+          end: "200% top",
+          scrub: 1.5,
+          pin: true,
+          invalidateOnRefresh: true,
+          refreshPriority: 1,
+        },
+      });
 
-        tl.to(".video-box", {
-          clipPath: "circle(100% at 50% 50%)",
-          ease: "power1.inOut",
-        });
+      tl.to(".video-box", {
+        clipPath: "circle(100% at 50% 50%)",
+        ease: "power1.inOut",
+      });
 
-        ScrollTrigger.refresh();
-      }, 100);
+      ScrollTrigger.refresh();
+    }, 100);
 
-      return () => clearTimeout(timer);
-    }
-  }, [isMobile]);
+    return () => clearTimeout(timer);
+  }, []); // Removed isMobile dependency as it's no longer used for logic
 
   useEffect(() => {
     if (videoRef.current) {
@@ -50,9 +48,7 @@ const VideoPinSection = () => {
     <section className="vd-pin-section">
       <div
         style={{
-          clipPath: isMobile
-            ? "circle(100% at 50% 50%)"
-            : "circle(6% at 50% 50%)",
+          clipPath: "circle(6% at 50% 50%)",
         }}
         className="size-full video-box"
       >
