@@ -7,13 +7,24 @@ import { useNavigate } from "react-router-dom";
 // Enhanced project data
 const enhancedProjects = flavorlists.map((project) => {
     let sourceLink = "https://github.com/ashitoshh01";
-    if (project.name === "DoOrDue") sourceLink = "https://github.com/ashitoshh01/do-or-due";
-    else if (project.name === "ReachFirst") sourceLink = "https://github.com/ashitoshh01/office-do-or-due";
-    else if (project.name === "OfficeOrDue") sourceLink = "https://github.com/ashitoshh01/office-do-or-due";
+    let description = "A transformative digital solution designed to streamline user workflows and enhance engagement through intuitive interfaces and robust architecture. Built with performance and scalability in mind.";
+
+    if (project.name === "DoOrDue") {
+        sourceLink = "https://github.com/ashitoshh01/do-or-due";
+        description = "DoorDue is a discipline focused to do app built to help people stop procrastinating and actually finish what they start. It turns tasks into real commitments by adding accountability, proof based completion, and consequences, making productivity feel serious, rewarding, and hard to ignore.";
+    } else if (project.name === "ReachFirst") {
+        sourceLink = "https://github.com/ashitoshh01/office-do-or-due";
+        description = "ReachFirst is an automation app that simplifies communication between teachers and students. It helps manage announcements, assignments, and group updates in one organized place, saving time and ensuring no important message is ever missed.";
+    } else if (project.name === "OfficeOrDue") {
+        sourceLink = "https://github.com/ashitoshh01/office-do-or-due";
+        description = "OfficeOrDue is a productivity and accountability platform designed for office teams. It helps employees stay focused on their work, track responsibilities clearly, and build a culture of ownership by turning daily tasks into structured commitments that actually get completed.";
+    } else if (project.name === "DishGuru") {
+        description = "DishGuru is a smart food discovery app that understands how you feel before suggesting what to eat. By asking a few simple questions, it reads the user’s mood and uses AI to recommend dishes they are most likely to enjoy at that moment.";
+    }
 
     return {
         ...project,
-        description: "A transformative digital solution designed to streamline user workflows and enhance engagement through intuitive interfaces and robust architecture. Built with performance and scalability in mind.",
+        description: description,
         sourceLink: sourceLink,
     };
 });
