@@ -14,7 +14,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import ProjectDetails from "./pages/ProjectDetails";
 import AllProjects from "./pages/AllProjects";
 import { useEffect, useState } from "react";
-import { HoloPulse } from "./components/ui/holo-pulse-loader";
+import { PencilLoader } from "./components/ui/pencil-loader";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -109,7 +109,7 @@ const HomePage = () => {
 
   // Show loading screen while loading
   if (isLoading) {
-    return <HoloPulse />;
+    return <PencilLoader />;
   }
 
   return (
