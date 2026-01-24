@@ -15,6 +15,7 @@ const ClipPathTitle = ({ title, color, bg, className, borderColor }) => {
           }}
         >
           <h2
+            className="text-3xl sm:text-4xl md:text-inherit leading-tight md:leading-inherit tracking-tighter md:tracking-inherit text-center whitespace-normal break-words"
             style={{
               color: color,
             }}

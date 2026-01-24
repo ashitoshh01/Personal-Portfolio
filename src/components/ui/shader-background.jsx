@@ -69,23 +69,29 @@ const ShaderBackground = () => {
       vec2 fragCoord = gl_FragCoord.xy;
       vec4 fragColor;
       vec2 uv = fragCoord.xy / iResolution.xy;
-      vec2 space = (fragCoord - iResolution.xy / 2.0) / iResolution.x * 2.0 * scale;
-
-      // Adjust amplitude based on screen width
+      
+      // Adjust amplitude and scale based on screen width
       float isMobile = step(iResolution.x, 768.0);
+      
+      // Reduce scale on mobile to zoom in and make waves appear wider/smoother
+      float currentScale = mix(scale, 3.0, isMobile);
+      
+      vec2 space = (fragCoord - iResolution.xy / 2.0) / iResolution.x * 2.0 * currentScale;
+
       float desktopAmp = 0.2;
       // Calculate mobile amplitude to cover ~70% of screen height
-      // Total visible height in space coords = (iResolution.y / iResolution.x) * 2.0 * scale
-      float totalHeight = (iResolution.y / iResolution.x) * 2.0 * scale;
-      float mobileAmp = totalHeight * 0.35; // 0.35 * 2 = 0.7 (70%)
+      float totalHeight = (iResolution.y / iResolution.x) * 2.0 * currentScale;
+      float mobileAmp = totalHeight * 0.35; 
       
       float currentLineAmp = mix(desktopAmp, mobileAmp, isMobile);
-      float currentWarpAmp = mix(0.2, mobileAmp * 0.5, isMobile); // Scale warp too but less
-      float currentMaxSpread = mix(1.0, mobileAmp * 1.5, isMobile);
+      // Significantly reduce warp on mobile to prevent "jagged" look
+      float currentWarpAmp = mix(0.2, 0.1, isMobile); 
+      float currentMaxSpread = mix(1.0, 1.5, isMobile); // Keep spread to fill volume
 
       float horizontalFade = 1.0 - (cos(uv.x * 6.28) * 0.5 + 0.5);
       float verticalFade = 1.0 - (cos(uv.y * 6.28) * 0.5 + 0.5);
 
+      // Use reduced warp parameters
       space.y += random(space.x * warpFrequency + iTime * warpSpeed) * currentWarpAmp * (0.5 + horizontalFade);
       space.x += random(space.y * warpFrequency + iTime * warpSpeed + 2.0) * currentWarpAmp * horizontalFade;
 
