@@ -26,7 +26,7 @@ const NavBar = () => {
   const navItems = [
     { name: "Home", url: "#hero", icon: Home },
     { name: "About", url: "#message", icon: User },
-    { name: "Projects", url: "#flavor", icon: Briefcase },
+    { name: "Projects", url: "#projects-section", icon: Briefcase },
     { name: "Contact", url: "#footer", icon: Mail },
   ];
 

@@ -119,12 +119,14 @@ const HomePage = () => {
         <div>
           <HeroSection />
           <MessageSection />
-          <FlavorSection />
-          <NutritionSection />
+          <div id="projects-section">
+            <FlavorSection />
+            <NutritionSection />
 
-          <div>
-            <BenefitSection />
-            <TestimonialSection />
+            <div>
+              <BenefitSection />
+              <TestimonialSection />
+            </div>
           </div>
 
           <FooterSection />
