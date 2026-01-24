@@ -55,7 +55,7 @@ const FooterSection = () => {
           {/* Contact Form */}
           <div className="lg:col-span-2">
             {/* Quick Info Card */}
-            <div className="bg-[#1A1A1A] rounded-3xl p-8 border border-white/5 mb-6 -mt-24 relative z-10 shadow-xl">
+            <div className="bg-[#1A1A1A] rounded-3xl p-8 border border-white/5 mb-6 relative z-10 shadow-xl">
               <h3 className="text-xl font-semibold mb-6 text-gray-200">Quick info</h3>
               <ul className="space-y-4 text-gray-400">
                 <li className="flex items-start gap-3">
