@@ -1,7 +1,8 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { SplitText } from "gsap/all";
+
 import { useMediaQuery } from "react-responsive";
+import ShaderBackground from "../components/ui/shader-background";
 
 const HeroSection = () => {
   const isMobile = useMediaQuery({
@@ -13,34 +14,35 @@ const HeroSection = () => {
   });
 
   useGSAP(() => {
-    const titleSplit = SplitText.create(".hero-title", {
-      type: "chars",
-    });
-
     const tl = gsap.timeline({
       delay: 0.3,
     });
 
-    tl.to(".hero-content", {
-      opacity: 1,
-      y: 0,
-      duration: 0.5,
-      ease: "power1.inOut",
-    })
-      .to(
+    tl.fromTo(
+      ".hero-content",
+      { opacity: 0 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: "power1.inOut",
+      }
+    )
+      .from(
         ".hero-text-scroll",
         {
           duration: 1,
-          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+          clipPath: "polygon(50% 0, 50% 0, 50% 100%, 50% 100%)",
           ease: "circ.out",
         },
         "-=0.5"
       )
       .from(
-        titleSplit.chars,
+        ".hero-title",
         {
-          yPercent: 200,
-          stagger: 0.02,
+          yPercent: 50,
+          opacity: 0,
+          duration: 1,
           ease: "power2.out",
         },
         "-=0.5"
@@ -61,33 +63,19 @@ const HeroSection = () => {
       yPercent: 30,
       ease: "power1.inOut",
     });
-
-    // Cleanup function to revert SplitText
-    return () => {
-      titleSplit.revert();
-    };
   });
 
   return (
     <section id="hero" className="bg-main-bg">
       <div className="hero-container">
-        <video
-          src="/videos/hero-bg.mp4"
-          autoPlay
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="hero-content opacity-0">
+        <ShaderBackground />
+        {/* Overlay to improve text readability */}
+        <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px] pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%)]" />
+        <div className="hero-content">
           <div className="overflow-hidden">
             <h1 className="hero-title">Ashitosh</h1>
           </div>
-          <div
-            style={{
-              clipPath: "polygon(50% 0, 50% 0, 50% 100%, 50% 100%)",
-            }}
-            className="hero-text-scroll"
-          >
+          <div className="hero-text-scroll">
             <div className="hero-subtitle">
               <h1>PROBLEM SOLVER + DEVELOPER </h1>
             </div>
