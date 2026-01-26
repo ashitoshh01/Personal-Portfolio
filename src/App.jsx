@@ -14,7 +14,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import ProjectDetails from "./pages/ProjectDetails";
 import AllProjects from "./pages/AllProjects";
 import { useEffect, useState } from "react";
-import { PencilLoader } from "./components/ui/pencil-loader";
+import Loader from "./components/ui/loader";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -109,7 +109,11 @@ const HomePage = () => {
 
   // Show loading screen while loading
   if (isLoading) {
-    return <PencilLoader />;
+    return (
+      <div className="flex justify-center items-center w-full h-screen bg-[#101010]">
+        <Loader />
+      </div>
+    );
   }
 
   return (

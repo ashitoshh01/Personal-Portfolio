@@ -416,10 +416,10 @@ body::-webkit-scrollbar {
 @keyframes pencilEraser {
   from,
   to {
-    transform: rotate(-45deg) translate(49px, 0);
+    transform: rotate(-90deg) translate(49px, 0);
   }
   50% {
-    transform: rotate(0deg) translate(49px, 0);
+    transform: rotate(-225deg) translate(49px, 0);
   }
 }
 
