@@ -18,7 +18,7 @@ const NutritionSection = () => {
     if (!cardsRef.current.length) return;
 
     const totalCards = techStack.length;
-    const scrollHeight = totalCards * 3000; // 3000px scroll per card for extended animation
+    const scrollHeight = totalCards * 1000; // 1500px scroll per card for extended animation
 
     // Ensure initial state is set
     cardsRef.current.forEach((card, index) => {
