@@ -9,10 +9,11 @@ const BenefitSection = () => {
       delay: 1,
       scrollTrigger: {
         trigger: ".benefit-section",
-        start: "top 60%",
+        start: "top 85%",
         end: "top top",
         scrub: 1.5,
         invalidateOnRefresh: true,
+        refreshPriority: 5,
       },
     });
 
@@ -36,6 +37,12 @@ const BenefitSection = () => {
         ease: "circ.out",
       })
       .to(".benefit-section .fourth-title", {
+        duration: 1,
+        opacity: 1,
+        clipPath: "polygon(0% 0%, 100% 0, 100% 100%, 0% 100%)",
+        ease: "circ.out",
+      })
+      .to(".benefit-section .fifth-title", {
         duration: 1,
         opacity: 1,
         clipPath: "polygon(0% 0%, 100% 0, 100% 100%, 0% 100%)",
@@ -85,7 +92,7 @@ const BenefitSection = () => {
               title={"Git - GitHub"}
               color={"#00ff15ff"}
               bg={"#ffffffff"}
-              className={"third-title"}
+              className={"fifth-title"}
               borderColor={"#222123"}
             />
           </div>

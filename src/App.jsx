@@ -15,6 +15,7 @@ import ProjectDetails from "./pages/ProjectDetails";
 import AllProjects from "./pages/AllProjects";
 import { useEffect, useState } from "react";
 import Loader from "./components/ui/loader";
+import ScrollIndicator from "./components/ScrollIndicator";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -119,6 +120,7 @@ const HomePage = () => {
   return (
     <main>
       <NavBar />
+      <ScrollIndicator />
       <div>
         <div>
           <HeroSection />

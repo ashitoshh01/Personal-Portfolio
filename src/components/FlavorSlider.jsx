@@ -19,19 +19,19 @@ const FlavorSlider = () => {
         scrollTrigger: {
           trigger: ".flavor-section",
           start: "2% top",
-          end: isTablet ? "+=5500" : "+=3500",
+          end: isTablet ? "+=3500" : "+=2500",
           scrub: 0.3, // Reduced for snappier response
           pin: true,
           anticipatePin: 1,
-          fastScrollEnd: true,
+          fastScrollEnd: false,
           invalidateOnRefresh: true,
-          refreshPriority: 1,
+          refreshPriority: 20,
           preventOverlaps: true,
         },
       });
 
       tl.to(".flavor-content-wrapper", {
-        x: isTablet ? "-235vw" : "-215vw",
+        x: isTablet ? "-180vw" : "-135vw",
         ease: "none",
         force3D: true,
       });
@@ -79,7 +79,7 @@ const FlavorSlider = () => {
   });
 
   const visibleFlavors = [
-    ...flavorlists.slice(0, 3),
+    ...flavorlists.slice(0, 2),
     {
       name: "See More",
       isSeeMore: true,
