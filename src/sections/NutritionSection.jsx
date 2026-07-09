@@ -61,9 +61,9 @@ const NutritionSection = () => {
 
         {/* Header - Moved to Left */}
         <div className="absolute top-10 left-10 flex flex-col items-start justify-center gap-3 z-50">
-          <h1 className="text-3xl md:text-6xl font-bold text-[#513022] uppercase tracking-tighter">
+          <h2 className="text-3xl md:text-6xl font-bold text-[#513022] uppercase tracking-tighter">
             Tech Stack
-          </h1>
+          </h2>
           <div className="bg-[#a26833] px-5 py-2 rotate-[-2deg] border-[0.3rem] border-[#e3d3bc]">
             <h2 className="text-[#e3d3bc] text-xl font-bold uppercase">Stack</h2>
           </div>

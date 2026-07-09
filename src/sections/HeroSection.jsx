@@ -1,5 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { useRef, useEffect } from "react";
 
 import { useMediaQuery } from "react-responsive";
 import ShaderBackground from "../components/ui/shader-background";
@@ -13,9 +14,13 @@ const HeroSection = () => {
     query: "(max-width: 1024px)",
   });
 
+  const introTlRef = useRef(null);
+  const hasPlayedOnce = useRef(false);
+
   useGSAP(() => {
     const tl = gsap.timeline({
       delay: 0.3,
+      paused: true,
     });
 
     tl.fromTo(
@@ -48,6 +53,12 @@ const HeroSection = () => {
         "-=0.5"
       );
 
+    introTlRef.current = tl;
+
+    // Play immediately on first load
+    tl.play();
+    hasPlayedOnce.current = true;
+
     const heroTl = gsap.timeline({
       scrollTrigger: {
         trigger: ".hero-container",
@@ -64,6 +75,25 @@ const HeroSection = () => {
       ease: "power1.inOut",
     });
   });
+
+  // Replay intro animation when hero scrolls back into view
+  useEffect(() => {
+    const heroEl = document.getElementById("hero");
+    if (!heroEl) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && hasPlayedOnce.current && introTlRef.current) {
+          // Restart the intro animation from the beginning
+          introTlRef.current.restart();
+        }
+      },
+      { threshold: 0.4 }
+    );
+
+    observer.observe(heroEl);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section id="hero" className="bg-main-bg">

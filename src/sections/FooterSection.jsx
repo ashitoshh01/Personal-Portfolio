@@ -1,4 +1,4 @@
-import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowUpRight, Github, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react";
 import { useState } from "react";
 
 const FooterSection = () => {
@@ -42,7 +42,7 @@ const FooterSection = () => {
     }
   };
   return (
-    <section id="footer" className="bg-[#050505] text-white py-20 px-5 md:px-10">
+    <footer id="footer" className="bg-[#050505] text-white py-20 px-5 md:px-10">
       <div className="max-w-7xl mx-auto space-y-16">
 
         {/* Header */}
@@ -162,6 +162,25 @@ const FooterSection = () => {
             </div>
           </div>
 
+          {/* Social Links Card */}
+          <div className="w-full bg-[#1A1A1A] rounded-3xl p-8 border border-white/5">
+            <h3 className="text-xl font-semibold mb-6 text-gray-200 text-center">Follow me</h3>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a href="https://github.com/ashitoshh01" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-5 py-3 bg-[#262626] border border-white/5 rounded-xl text-gray-400 hover:text-white hover:border-white/20 transition-all">
+                <Github className="w-5 h-5" />
+                GitHub
+              </a>
+              <a href="https://www.linkedin.com/in/ashitosh01" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-5 py-3 bg-[#262626] border border-white/5 rounded-xl text-gray-400 hover:text-white hover:border-white/20 transition-all">
+                <Linkedin className="w-5 h-5" />
+                LinkedIn
+              </a>
+              <a href="https://x.com/ashitoshh01" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-5 py-3 bg-[#262626] border border-white/5 rounded-xl text-gray-400 hover:text-white hover:border-white/20 transition-all">
+                <Twitter className="w-5 h-5" />
+                X (Twitter)
+              </a>
+            </div>
+          </div>
+
         </div>
 
         {/* Footer Bottom */}
@@ -174,7 +193,7 @@ const FooterSection = () => {
         </div>
 
       </div>
-    </section >
+    </footer>
   );
 };
 

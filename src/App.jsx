@@ -110,7 +110,7 @@ const HomePage = () => {
     <main>
       <NavBar />
       <ScrollIndicator />
-      <div>
+      <article>
         <div>
           <HeroSection />
           <MessageSection />
@@ -126,7 +126,7 @@ const HomePage = () => {
 
           <FooterSection />
         </div>
-      </div>
+      </article>
     </main>
   );
 };

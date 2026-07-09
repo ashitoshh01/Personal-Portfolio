@@ -201,14 +201,23 @@ const ShaderBackground = () => {
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    let startTime = Date.now();
-    let animationFrameId;
+    let animationFrameId = null;
     let isVisible = true;
+    // Track elapsed time so the shader doesn't "jump" after being paused
+    let elapsedTime = 0;
+    let lastFrameTime = performance.now();
 
-    const render = () => {
-      if (!isVisible) return; // Skip rendering when off-screen
+    const render = (now) => {
+      if (!isVisible) {
+        // Don't schedule the next frame — the observer will restart us
+        animationFrameId = null;
+        return;
+      }
 
-      const currentTime = (Date.now() - startTime) / 1000;
+      // Accumulate only the real delta while visible
+      const delta = (now - lastFrameTime) / 1000;
+      lastFrameTime = now;
+      elapsedTime += delta;
 
       gl.clearColor(0.0, 0.0, 0.0, 1.0);
       gl.clear(gl.COLOR_BUFFER_BIT);
@@ -216,7 +225,7 @@ const ShaderBackground = () => {
       gl.useProgram(programInfo.program);
 
       gl.uniform2f(programInfo.uniformLocations.resolution, canvas.width, canvas.height);
-      gl.uniform1f(programInfo.uniformLocations.time, currentTime);
+      gl.uniform1f(programInfo.uniformLocations.time, elapsedTime);
 
       gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
       gl.vertexAttribPointer(
@@ -237,7 +246,9 @@ const ShaderBackground = () => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         isVisible = entry.isIntersecting;
-        if (isVisible && !animationFrameId) {
+        if (isVisible && animationFrameId === null) {
+          // Reset lastFrameTime so the first delta after resume is ~0
+          lastFrameTime = performance.now();
           animationFrameId = requestAnimationFrame(render);
         }
       },
@@ -245,7 +256,7 @@ const ShaderBackground = () => {
     );
     observer.observe(canvas);
 
-    render();
+    animationFrameId = requestAnimationFrame(render);
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
