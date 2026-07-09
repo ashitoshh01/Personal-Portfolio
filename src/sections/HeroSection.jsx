@@ -107,7 +107,7 @@ const HeroSection = () => {
           </div>
           <div className="hero-text-scroll">
             <div className="hero-subtitle">
-              <span className="block uppercase text-[5.5vw] font-bold text-white leading-none tracking-tighter 2xl:px-[1.2vw] px-2 2xl:pb-[1vw] pb-2 2xl:py-0 py-1.5 whitespace-nowrap">PROBLEM SOLVER + DEVELOPER </span>
+              <span className="block uppercase text-[7.5vw] md:text-[5.5vw] font-bold text-white leading-none tracking-tighter 2xl:px-[1.2vw] px-2 2xl:pb-[1vw] pb-2 2xl:py-0 py-1.5 whitespace-nowrap">PROBLEM SOLVER + DEVELOPER </span>
             </div>
           </div>
 

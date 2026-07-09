@@ -16,6 +16,7 @@ const ShaderBackground = () => {
     precision highp float;
     uniform vec2 iResolution;
     uniform float iTime;
+    uniform float uIsMobile;
 
     const float overallSpeed = 0.2;
     const float gridSmoothWidth = 0.015;
@@ -71,7 +72,7 @@ const ShaderBackground = () => {
       vec2 uv = fragCoord.xy / iResolution.xy;
       
       // Adjust amplitude and scale based on screen width
-      float isMobile = step(iResolution.x, 768.0);
+      float isMobile = uIsMobile;
       
       // Reduce scale on mobile to zoom in and make waves appear wider/smoother
       float currentScale = mix(scale, 3.0, isMobile);
@@ -100,22 +101,28 @@ const ShaderBackground = () => {
       vec4 bgColor1 = vec4(0.063, 0.063, 0.063, 1.0);
       vec4 bgColor2 = vec4(0.063, 0.063, 0.063, 1.0);
 
-      for(int l = 0; l < linesPerGroup; l++) {
-        float normalizedLineIndex = float(l) / float(linesPerGroup);
-        float offsetTime = iTime * offsetSpeed;
-        float offsetPosition = float(l) + space.x * offsetFrequency;
-        float rand = random(offsetPosition + offsetTime) * 0.5 + 0.5;
-        float halfWidth = mix(minLineWidth, maxLineWidth, rand * horizontalFade) / 2.0;
-        float offset = random(offsetPosition + offsetTime * (1.0 + normalizedLineIndex)) * mix(minOffsetSpread, currentMaxSpread, horizontalFade);
-        float linePosition = getPlasmaY(space.x, horizontalFade, offset, currentLineAmp);
-        float line = drawSmoothLine(linePosition, halfWidth, space.y) / 2.0 + drawCrispLine(linePosition, halfWidth * 0.15, space.y);
+      if (isMobile > 0.5) {
+        // Render only the soft static whitish glow in the back, no waves/motion/lines
+        float totalGlow = (smoothstep(0.35, 0.0, abs(uv.y - 0.5)) * 0.35 + smoothstep(0.45, 0.0, length(uv - vec2(0.5))) * 0.15) * horizontalFade;
+        lines = totalGlow * lineColor;
+      } else {
+        for(int l = 0; l < linesPerGroup; l++) {
+          float normalizedLineIndex = float(l) / float(linesPerGroup);
+          float offsetTime = iTime * offsetSpeed;
+          float offsetPosition = float(l) + space.x * offsetFrequency;
+          float rand = random(offsetPosition + offsetTime) * 0.5 + 0.5;
+          float halfWidth = mix(minLineWidth, maxLineWidth, rand * horizontalFade) / 2.0;
+          float offset = random(offsetPosition + offsetTime * (1.0 + normalizedLineIndex)) * mix(minOffsetSpread, currentMaxSpread, horizontalFade);
+          float linePosition = getPlasmaY(space.x, horizontalFade, offset, currentLineAmp);
+          float line = drawSmoothLine(linePosition, halfWidth, space.y) / 2.0 + drawCrispLine(linePosition, halfWidth * 0.15, space.y);
 
-        float circleX = mod(float(l) + iTime * lineSpeed, 25.0) - 12.0;
-        vec2 circlePosition = vec2(circleX, getPlasmaY(circleX, horizontalFade, offset, currentLineAmp));
-        float circle = drawCircle(circlePosition, 0.01, space) * 4.0;
+          float circleX = mod(float(l) + iTime * lineSpeed, 25.0) - 12.0;
+          vec2 circlePosition = vec2(circleX, getPlasmaY(circleX, horizontalFade, offset, currentLineAmp));
+          float circle = drawCircle(circlePosition, 0.01, space) * 4.0;
 
-        line = line + circle;
-        lines += line * lineColor * rand;
+          line = line + circle;
+          lines += line * lineColor * rand;
+        }
       }
 
       fragColor = mix(bgColor1, bgColor2, uv.x);
@@ -189,6 +196,7 @@ const ShaderBackground = () => {
       uniformLocations: {
         resolution: gl.getUniformLocation(shaderProgram, 'iResolution'),
         time: gl.getUniformLocation(shaderProgram, 'iTime'),
+        uIsMobile: gl.getUniformLocation(shaderProgram, 'uIsMobile'),
       },
     };
 
@@ -226,6 +234,7 @@ const ShaderBackground = () => {
 
       gl.uniform2f(programInfo.uniformLocations.resolution, canvas.width, canvas.height);
       gl.uniform1f(programInfo.uniformLocations.time, elapsedTime);
+      gl.uniform1f(programInfo.uniformLocations.uIsMobile, window.innerWidth < 770 ? 1.0 : 0.0);
 
       gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
       gl.vertexAttribPointer(
