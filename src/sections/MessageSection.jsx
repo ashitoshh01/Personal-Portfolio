@@ -92,7 +92,7 @@ const MessageSection = () => {
               className="msg-text-scroll"
             >
               <div className="bg-white md:pb-3 pb-1 md:px-8 px-3">
-                <h3 className="text-black md:text-6xl text-2xl font-bold">Full stack</h3>
+                <h3 className="text-black md:text-6xl text-[11vw] font-bold">Full stack</h3>
               </div>
             </div>
 

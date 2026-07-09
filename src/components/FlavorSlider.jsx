@@ -13,14 +13,12 @@ const FlavorSlider = () => {
   });
 
   useGSAP(() => {
-    // Add a small delay to ensure DOM is ready
-    const timer = setTimeout(() => {
-      const tl = gsap.timeline({
+    const tl = gsap.timeline({
         scrollTrigger: {
           trigger: ".flavor-section",
-          start: "2% top",
+          start: "top top",
           end: isTablet ? "+=3500" : "+=2500",
-          scrub: 0.3, // Reduced for snappier response
+          scrub: 0.3,
           pin: true,
           anticipatePin: 1,
           fastScrollEnd: false,
@@ -73,9 +71,6 @@ const FlavorSlider = () => {
 
       // Force refresh to ensure pinning works correctly on load
       ScrollTrigger.refresh();
-    }, 100);
-
-    return () => clearTimeout(timer);
   });
 
   const visibleFlavors = [
