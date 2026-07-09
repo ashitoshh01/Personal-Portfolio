@@ -203,12 +203,13 @@ const ShaderBackground = () => {
 
     let startTime = Date.now();
     let animationFrameId;
+    let isVisible = true;
 
     const render = () => {
+      if (!isVisible) return; // Skip rendering when off-screen
+
       const currentTime = (Date.now() - startTime) / 1000;
 
-      // Note: gl.clearColor doesn't effectively clear transparent canvas if we want to show CSS background underlying it,
-      // but here we are drawing full screen opaque colors (fragColor.a = 1.0).
       gl.clearColor(0.0, 0.0, 0.0, 1.0);
       gl.clear(gl.COLOR_BUFFER_BIT);
 
@@ -232,11 +233,24 @@ const ShaderBackground = () => {
       animationFrameId = requestAnimationFrame(render);
     };
 
+    // Pause shader when hero section scrolls out of view to save GPU/battery
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible && !animationFrameId) {
+          animationFrameId = requestAnimationFrame(render);
+        }
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(canvas);
+
     render();
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
       cancelAnimationFrame(animationFrameId);
+      observer.disconnect();
     };
   }, []);
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "framer-motion";
 import { flavorlists } from "../constants";
 import NavBar from "../components/NavBar";
 import { useNavigate } from "react-router-dom";

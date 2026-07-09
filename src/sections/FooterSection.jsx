@@ -46,9 +46,9 @@ const FooterSection = () => {
       <div className="max-w-7xl mx-auto space-y-16">
 
         {/* Header */}
-        <h1 className="text-5xl md:text-8xl font-bold text-center tracking-tighter uppercase font-['Antonio'] md:mb-20 mb-10 text-[#F2F0E9]">
+        <h2 className="text-5xl md:text-8xl font-bold text-center tracking-tighter uppercase font-['Antonio'] md:mb-20 mb-10 text-[#F2F0E9]">
           Let's build something together
-        </h1>
+        </h2>
 
         <div className="flex flex-col items-center gap-10 max-w-4xl mx-auto w-full">
 

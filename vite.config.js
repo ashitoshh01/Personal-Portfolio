@@ -9,4 +9,14 @@ export default defineConfig({
   server: {
     allowedHosts: [".ngrok-free.app"],
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          "vendor-react": ["react", "react-dom", "react-router-dom"],
+          "vendor-animation": ["gsap", "framer-motion", "lenis"],
+        },
+      },
+    },
+  },
 });

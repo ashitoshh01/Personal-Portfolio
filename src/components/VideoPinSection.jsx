@@ -10,6 +10,7 @@ const VideoPinSection = () => {
   });
 
   const videoRef = useRef(null);
+  const sectionRef = useRef(null);
 
   useGSAP(() => {
     const timer = setTimeout(() => {
@@ -34,18 +35,36 @@ const VideoPinSection = () => {
     }, 100);
 
     return () => clearTimeout(timer);
-  }, []); // Removed isMobile dependency as it's no longer used for logic
+  }, []);
 
+  // Lazy load video — only play when section is visible
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch((error) => {
-        console.error("Video play failed:", error);
-      });
-    }
+    const video = videoRef.current;
+    const section = sectionRef.current;
+    if (!video || !section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // Start loading and playing when visible
+          if (video.preload === "none") {
+            video.preload = "auto";
+            video.load();
+          }
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <section className="vd-pin-section">
+    <section ref={sectionRef} className="vd-pin-section">
       <div
         style={{
           clipPath: "circle(6% at 50% 50%)",
@@ -58,16 +77,16 @@ const VideoPinSection = () => {
           playsInline
           muted
           loop
-          autoPlay
+          preload="none"
           className="size-full object-cover"
         />
 
         <div className="abs-center md:scale-100 scale-200">
-          <img src="/images/circle-text.svg" alt="" className="spin-circle" />
+          <img src="/images/circle-text.svg" alt="Scroll to explore" className="spin-circle" />
           <div className="play-btn">
             <img
               src="/images/play.svg"
-              alt=""
+              alt="Play video"
               className="size-[3vw] ml-[.5vw]"
             />
           </div>

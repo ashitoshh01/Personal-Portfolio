@@ -78,12 +78,12 @@ const MessageSection = () => {
   });
 
   return (
-    <section id="message" className="message-content">
+    <section id="message" className="message-content" aria-label="About Ashitosh">
       <div className="container mx-auto flex-center py-28 relative">
         <div className="w-full h-full">
           <div className="msg-wrapper">
-            <h1 className="first-message">Software Engineer</h1>
-            <h1 className="first-message">Web developer</h1>
+            <h2 className="first-message">Software Engineer</h2>
+            <h2 className="first-message">Web developer</h2>
 
             <div
               style={{
@@ -92,12 +92,12 @@ const MessageSection = () => {
               className="msg-text-scroll"
             >
               <div className="bg-white md:pb-3 pb-1 md:px-8 px-3">
-                <h2 className="text-black md:text-6xl text-2xl font-bold">Full stack</h2>
+                <h3 className="text-black md:text-6xl text-2xl font-bold">Full stack</h3>
               </div>
             </div>
 
-            <h1 className="second-message">Reverse Engineer</h1>
-            <h1 className="second-message">Problem Solver</h1>
+            <h2 className="second-message">Reverse Engineer</h2>
+            <h2 className="second-message">Problem Solver</h2>
           </div>
 
           <div className="flex-center md:mt-20 mt-10">

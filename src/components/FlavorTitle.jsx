@@ -4,10 +4,10 @@ import { SplitText } from "gsap/all";
 
 const FlavorTitle = () => {
   useGSAP(() => {
-    const firstTextSplit = SplitText.create(".first-text-split h1", {
+    const firstTextSplit = SplitText.create(".first-text-split h2", {
       type: "chars",
     });
-    const secondTextSplit = SplitText.create(".second-text-split h1", {
+    const secondTextSplit = SplitText.create(".second-text-split h2", {
       type: "chars",
     });
 
@@ -56,7 +56,7 @@ const FlavorTitle = () => {
   return (
     <div className="general-title col-center h-full 2xl:gap-32 xl:gap-24 md:gap-16 gap-0">
       <div className="overflow-hidden 2xl:py-0 py-3 first-text-split">
-        <h1 className="text-black"> projects</h1>
+        <h2 className="text-black"> projects</h2>
       </div>
 
       <div
@@ -66,12 +66,12 @@ const FlavorTitle = () => {
         className="flavor-text-scroll -mt-4 -mb-4 md:mt-0 md:mb-0"
       >
         <div className="bg-black pb-5 2xl:pt-0 pt-3 2xl:px-5 px-3">
-          <h2 className="text-white">which are</h2>
+          <h3 className="text-white">which are</h3>
         </div>
       </div>
 
       <div className="overflow-hidden 2xl:py-0 py-3 second-text-split">
-        <h1 className="text-black">Production ready</h1>
+        <h2 className="text-black">Production ready</h2>
       </div>
     </div>
   );

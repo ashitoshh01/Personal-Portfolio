@@ -1,0 +1,68 @@
+# Ashitosh Lavhate — Portfolio
+
+> Personal portfolio website of Ashitosh Lavhate, a Full-Stack Developer and UI/UX Designer from India.
+
+## About
+
+Ashitosh Lavhate is a software engineer and full-stack web developer specializing in building production-ready digital products. He focuses on clean design, reliable performance, and intuitive user experiences. He is passionate about technology, innovation, and turning ideas into reality through code.
+
+## Skills & Tech Stack
+
+### Frontend Development
+- React.js, Next.js, Bootstrap
+- Figma (UI/UX Design)
+- GSAP animations, Framer Motion
+
+### Backend Development
+- Express.js, Node.js, Django
+
+### Core Programming Languages
+- Python, Java, C, C++, JavaScript
+
+### Database & Backend Services
+- SQL, MongoDB, Firebase, Supabase
+
+### Tools & Platforms
+- Git, GitHub, Vercel, Tableau, Ultimaker Cura
+
+### Preferred Tools
+- Figma, Firebase, Supabase, React, Next.js, Vercel, Git, GitHub
+
+## Projects
+
+### DoOrDue
+- URL: https://doordue.vercel.app
+- Source: https://github.com/ashitoshh01/do-or-due
+- Description: A discipline-focused to-do app built to help people stop procrastinating and actually finish what they start. It turns tasks into real commitments by adding accountability, proof-based completion, and consequences.
+
+### ReachFirst
+- URL: https://reachfirst.vercel.app
+- Source: https://github.com/ashitoshh01/office-do-or-due
+- Description: An automation app that simplifies communication between teachers and students. It helps manage announcements, assignments, and group updates in one organized place.
+
+### OfficeOrDue
+- URL: https://officeordue.vercel.app
+- Source: https://github.com/ashitoshh01/office-do-or-due
+- Description: A productivity and accountability platform designed for office teams. It helps employees stay focused, track responsibilities, and build a culture of ownership.
+
+### DishGuru
+- URL: https://dish-guru.vercel.app
+- Description: A smart food discovery app that understands the user's mood before suggesting what to eat. Uses AI to recommend dishes based on how the user feels.
+
+## Contact
+
+- Email: ashitoshlavhate2@gmail.com
+- Phone: +91 9518352166
+- Open for collaborations and internships
+
+## Social Links
+
+- GitHub: https://github.com/ashitoshh01
+- LinkedIn: https://www.linkedin.com/in/ashitosh01
+- X (Twitter): https://x.com/ashitoshh01
+
+## Site Info
+
+- Built with: React, Vite, GSAP, Tailwind CSS, Framer Motion
+- Hosted on: Vercel
+- Contact form powered by: Resend

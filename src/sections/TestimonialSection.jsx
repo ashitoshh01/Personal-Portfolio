@@ -89,26 +89,29 @@ const TestimonialSection = () => {
   };
 
   return (
-    <section ref={sectionRef} className="testimonials-section">
+    <section ref={sectionRef} className="testimonials-section" aria-label="Social Links">
       <div className="absolute size-full flex flex-col items-center pt-[5vw]">
-        <h1 className="text-black first-title">LET'S CONNECT</h1>
-        <h1 className="text-light-brown sec-title">ON</h1>
+        <h2 className="text-black first-title">LET'S CONNECT</h2>
+        <h2 className="text-light-brown sec-title">ON</h2>
 
       </div>
 
       <div className="pin-box">
         {cards.map((card, index) => (
-          <div
+          <a
             key={index}
+            href={card.link}
+            target="_blank"
+            rel="me noopener noreferrer"
             className={`vd-card ${card.translation} ${card.rotation} cursor-pointer`}
-            onClick={() => card.link && window.open(card.link, "_blank")}
           >
             <img
               src={card.img}
-              alt={card.name}
+              alt={`Connect with Ashitosh on ${card.name}`}
               className="size-full object-cover"
+              loading="lazy"
             />
-          </div>
+          </a>
         ))}
       </div>
     </section>
